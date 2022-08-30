@@ -26,9 +26,17 @@
         <%= form.file_field :cover_page, class:"mb-2 form-control" %>
         <br>
         <br>
-        <%= form.label :files, "Files :" %>
-        <%= form.file_field :files, multiple: true, class:"mb-2 form-control" %>
         <br>
+        <div class="mb-6">
+          <%= form.label :files, class: "label" %>
+          <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="2" data-dropzone-max-files="5">
+            <%= form.file_field :files, multiple: true, direct_upload: true, data: { dropzone_target: 'input' } %>
+            <div class="dropzone-msg dz-message needsclick text-gray-600">
+              <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
+              <span class="dropzone-msg-desc text-sm">2 MB file size maximum. Allowed file types png, jpg.</span>
+            </div>
+          </div>
+        </div>
         <div class="d-flex justify-content-center">
           <%= form.submit "Save Book", class:"btn-secondary border-0 shadow py-2 px-5 mt-4" %>
         </div>
