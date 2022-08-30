@@ -1,0 +1,38 @@
+<div class="set-center flex-column form h-auto mt-3">
+  <div class="card shadow" style="width: 36rem;">
+    <div class="card-header">
+      <h2 class="text-center mt-2">Book Form</h2>
+    </div>
+    <div class="card-body">
+      <!--Error Message-->
+      <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+          <p class="text-danger"><%= error %></p>
+        <% end %>
+      <% end %>
+      <!-- Form Started Here -->
+      <%= form_with model: @book do |form| %>
+        <br>
+        <%= form.label :name, "Book Name :", class:"mt-3" %>
+        <%= form.text_field :name, placeholder: "Enter Book Name Here", class:"mb-2 form-control" %>
+        <br>
+        <%= form.label :author, "Author :" %>
+        <%= form.text_field :author, placeholder: "Enter Author Name Here", class:"mb-2 form-control" %>
+        <br>
+        <%= form.label :price, "Price :" %>
+        <%= form.number_field :price, placeholder: "Enter Book Price Here", class:"mb-2 form-control" %>
+        <br>
+        <%= form.label :cover_page, "Cover Page :" %>
+        <%= form.file_field :cover_page, class:"mb-2 form-control" %>
+        <br>
+        <br>
+        <%= form.label :files, "Files :" %>
+        <%= form.file_field :files, multiple: true, class:"mb-2 form-control" %>
+        <br>
+        <div class="d-flex justify-content-center">
+          <%= form.submit "Save Book", class:"btn-secondary border-0 shadow py-2 px-5 mt-4" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
